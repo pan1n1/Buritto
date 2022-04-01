@@ -4,14 +4,14 @@
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $dbname = "pdo_toets";
+    $dbname = "DB";
 
     try {
 
         $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
         
-        $stmt = $conn->prepare("SELECT id, bodemformaat, saus, kruiden FROM pizza WHERE id=:id");
+        $stmt = $conn->prepare("SELECT id, buritoformaat, Saus, Bonen, Rijst FROM pizza WHERE id=:id");
 
         $stmt->bindParam(':id', $id);
         $stmt->execute();
@@ -44,7 +44,7 @@
         <h1 class="text-center mt-2">Update je Burrito</h1>
 
         <br>
-        <form action="create.php" method="post">
+        <form action="update_script.php" method="post">
             <div class="input-group">
                 <h5 class="col-12 my-3">Burito Formaat</h5>
                 <select class="form-select" id="inputGrote" name="buritoformaat">
@@ -115,7 +115,7 @@
             </div>
             
 
-            <button name="submit" type="submit" class="btn btn-primary my-3">Submit</button>
+            <button name="submit" type="submit" value="<?php echo($id) ?>" class="btn btn-primary my-3">Submit</button>
             </div>
           
             

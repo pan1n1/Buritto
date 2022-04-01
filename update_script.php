@@ -1,9 +1,11 @@
 <?php
+    var_dump($_POST);
+
     ob_start();
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $dbname = "db";
+    $dbname = "DB";
 
     
     try {
@@ -11,12 +13,12 @@
         $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
         
-        $sql = "UPDATE Burrito SET buritoformaat = :buritoformaat, saus = :saus, Bonen = :Bonen, Rijst = :Rijst, WHERE id = :id;"; 
+        $sql = "UPDATE Burrito SET buritoformaat = :buritoformaat, saus = :saus, Bonen = :Bonen, Rijst = :Rijst WHERE id = :id;"; 
 
         $stmt = $conn->prepare($sql);
 
         //pulled de vars
-        $id = NULL;
+        $id = $_POST["submit"];
         $buritoformaat = $_POST["buritoformaat"];
         $saus = $_POST["Saus"];
         $Bonen = $_POST["Bonen"];
@@ -40,5 +42,6 @@
         echo $sql . "<br>" . $e->getMessage();
            
     }
+    header("Location: ./read.php");
     $conn = NULL
 ?>
