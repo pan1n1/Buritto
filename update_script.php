@@ -11,23 +11,25 @@
         $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
         
-        $sql = "UPDATE pizza SET bodemformaat = :bodemformaat, saus = :saus, topping = :topping, kruiden = :kruiden, WHERE id = :id;"; 
+        $sql = "UPDATE Burrito SET buritoformaat = :buritoformaat, saus = :saus, Bonen = :Bonen, Rijst = :Rijst, WHERE id = :id;"; 
 
         $stmt = $conn->prepare($sql);
 
         //pulled de vars
-        $bodemformaat = $_POST["bodemformaat"];
-        $saus = $_POST["inputGroupSaus"];
-        $topping = $_POST["topping"];
-        $kruiden = $_POST["kruiden"];
-        $id = $_POST["id"];
+        $id = NULL;
+        $buritoformaat = $_POST["buritoformaat"];
+        $saus = $_POST["Saus"];
+        $Bonen = $_POST["Bonen"];
+        $Rijst = $_POST["Rijst"];
+
 
         //bind de vars and de querry
-        $stmt->bindParam(':bodemformaat', $bodemformaat);
-        $stmt->bindParam(':saus', $saus);
-        $stmt->bindParam(':topping', $topping);
-        $stmt->bindParam(':kruiden', $kruiden);
         $stmt->bindParam(':id', $id);
+        $stmt->bindParam(':buritoformaat', $buritoformaat);
+        $stmt->bindParam(':saus', $saus);
+        $stmt->bindParam(':Bonen', $Bonen);
+        $stmt->bindParam(':Rijst', $Rijst);
+
 
     
 
