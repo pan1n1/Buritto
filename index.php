@@ -18,84 +18,79 @@
         <br>
         <form action="create.php" method="post">
             <div class="input-group">
-                <h5 class="col-12 my-3">BodemFormaat</h5>
-                <select class="form-select" id="inputGroupBodemFormaat" name="bodemformaat">
+                <h5 class="col-12 my-3">Burito Formaat</h5>
+                <select class="form-select" id="inputGrote" name="buritoformaat">
                     <option selected>Maak je keuze</option>
-                    <option value="40">40 cm</option>
-                    <option value="35">35 cm</option>
-                    <option value="30">30 cm</option>
-                    <option value="25">25 cm</option>
                     <option value="20">20 cm</option>
+                    <option value="25">25 cm</option>
+                    <option value="30">30 cm</option>
+
                 </select>
             </div>  
 
             <!-- Saus -->
             <div class="input-group">
                 <h5 class="col-12 my-3">Saus</h5>
-                <select class="form-select" id="inputGroupSaus" name="inputGroupSaus">
+                <select class="form-select" id="inputGroupSaus" name="Saus">
                     <option selected>Maak je keuze</option>
-                    <option value="tomatensaus">Tomatensaus</option>
-                    <option value="extratomatensaus">Extra Tomatensaus</option>
-                    <option value="spicytomatensaus">Spicy Tomatensaus</option>
-                    <option value="bbqsaus">BBQ Saus</option>
-                    <option value="cremefraiche">Creme fraiche</option>
+                    <option value="Salsa crudo">Salsa crudo</option>
+                    <option value="Salsa verde">Salsa verde</option>
+                    <option value="Salsa roja">Salsa roja</option>
+                    <option value="Creme fraiche">Creme fraiche</option>
                 </select>
             </div>  
 
-            <!-- Pizza Topping -->
-            <h5 class="col-12 my-3">Pizzatoppings</h5>
+            <!-- Bonen -->
+            <h5 class="col-12 my-3">Bonen</h5>
                
             <div class="form-check">
-                <input class="form-check-input"  name="topping" type="radio" value="vegan" id="vegan">
+                <input class="form-check-input"  name="Bonen" type="radio" value="Kidney Bonen" id="vegan">
                 <label class="form-check-label" for="flexRadioDefault1">
-                    vegan
+                    Kidney Bonen
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input"  name="topping" type="radio" value="vegetarisch" id="vegetarisch">
+                <input class="form-check-input"  name="Bonen" type="radio" value="Zwarte Bonen" id="vegetarisch">
                 <label class="form-check-label" for="flexRadioDefault2">
-                    vegetarisch
+                    Zwarte Bonen
                 </label>
             </div>
 
             <div class="form-check">
-                <input class="form-check-input"  name="topping" type="radio" value="vlees" id="vlees">
+                <input class="form-check-input"  name="Bonen" type="radio" value="Bruine Bonen" id="vlees">
                 <label class="form-check-label" for="flexRadioDefault3">
-                    vlees
+                    Bruine Bonen
                 </label>
             </div>
 
-            <!-- Kruiden -->
-            <h5 class="col-12 my-3">Kruiden</h5>
+            <!-- Rice from ice -->
+            <h5 class="col-12 my-3">Rijst</h5>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="peterselie" name="kruiden" id="peterselie">
+                <input class="form-check-input" type="radio" name="Rijst" value="Witte Rijst" id="Witte Rijst">
                 <label class="form-check-label" for="flexCheckDefault">
-                    Peterselie
+                    Witte Rijst
                 </label>
             </div>
 
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="kruiden" value="oregano" id="oregano">
+                <input class="form-check-input" type="radio" name="Rijst" value="Zwarte Rijst" id="ZwarteRijst">
                 <label class="form-check-label" for="flexCheckChecked">
-                    Oregano
+                    Zwarte Rijst
                 </label>
             </div>
 
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="kruiden" value="chiliflakes" id="chiliflakes">
+                <input class="form-check-input" type="radio" name="Rijst" value="Bruine Rijst" id="BruineRijst">
                 <label class="form-check-label" for="flexCheckChecked">
-                    Chili Flakes
+                    Bruine Rijst
                 </label>
             </div>
             
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="kruiden" value="zwartepeper" id="zwartepeper">
-                <label class="form-check-label" for="flexCheckChecked">
-                    Zwarte peper
-                </label>
+
+            <button name="submit" type="submit" class="btn btn-primary my-3">Submit</button>
             </div>
           
-            <button name="submit" type="submit" class="btn btn-primary my-3">Submit</button>
+            
         </form>
   </div>
     

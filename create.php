@@ -1,34 +1,38 @@
 <?php
-
+    include("./Functions.php");
     ob_start();
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $dbname = "pdo_toets";
+    $dbname = "DB";
 
     try {
+        var_dump($_POST);
 
         $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
 
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         if(isset($_POST["submit"])) {
+            
+            $id = NULL;
+            $buritoformaat = $_POST["buritoformaat"];
+            $saus = $_POST["Saus"];
+            $Bonen = $_POST["Bonen"];
+            $Rijst = $_POST["Rijst"];
 
-            $stmt = $conn->prepare("INSERT INTO pizza (id, bodemformaat, saus, topping, kruiden) 
-            VALUES (:id, :bodemformaat, :saus, :topping, :kruiden)");
+
+
+
+            $stmt = $conn->prepare("INSERT INTO Burrito VALUES (:id, :buritoformaat, :saus, :Bonen, :Rijst)");
             $stmt->bindParam(':id', $id);
-            $stmt->bindParam(':bodemformaat', $bodemformaat);
+            $stmt->bindParam(':buritoformaat', $buritoformaat);
             $stmt->bindParam(':saus', $saus);
-            $stmt->bindParam(':topping', $topping);
-            $stmt->bindParam(':kruiden', $kruiden);
+            $stmt->bindParam(':Bonen', $Bonen);
+            $stmt->bindParam(':Rijst', $Rijst);
 
             //  Insert Row
 
-            $id = NULL;
-            $bodemformaat = $_POST["bodemformaat"];
-            $saus = $_POST["inputGroupSaus"];
-            $topping = $_POST["topping"];
-            $kruiden = $_POST["kruiden"];
 
             $stmt->execute();
             header("Location: ./read.php");
@@ -37,7 +41,8 @@
     }
     catch(PDOException $e) {
         echo $e->getMessage();
-        header("Location: ./index.php");   
+        //header("Location: ./index.php");   
     }
+    error();
     $conn = null;
 ?>

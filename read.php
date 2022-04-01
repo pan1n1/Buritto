@@ -1,17 +1,18 @@
 <?php
-
+    include("./Functions.php");
+    include("./connect_db.php");
     ob_start();
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $dbname = "pdo_toets";
+    $dbname = "DB";
 
     try {
 
         $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $stmt = $conn->prepare("SELECT id, bodemformaat, saus, topping, kruiden FROM pizza");
+        $stmt = $conn->prepare("SELECT id, buritoformaat, saus, Bonen, Rijst FROM Burrito");
         $stmt->execute();
 
         $result = $stmt->setFetchMode(PDO::FETCH_OBJ);
@@ -20,20 +21,20 @@
         foreach ($stmt->fetchAll() as $key=>$value) {
             $tableRow .= "<tr> 
                             <td>$value->id</td>
-                            <td>$value->bodemformaat</td>
+                            <td>$value->buritoformaat</td>
                             <td>$value->saus</td>
-                            <td>$value->topping</td>
-                            <td>$value->kruiden</td>
-                            <td><a href='./update.php?id=" . $value->id . "'><i class='fa-solid fa-pencil'></i></a></td>
-                            <td> <a href='./delete.php?id=" . $value->id . "'><i class='fa-solid fa-ban'></i> </a> </td>
-                            <td><a href='http://nu.nl'>test</a></td>
-                            <td><a href='./update.php?id=3'><i class='fa-solid fa-pencil'></i></a</td>
+                            <td>$value->Bonen</td>
+                            <td>$value->Rijst</td>
+                            
+                            <td> <a href='./delete.php?id=" . $value->id . "'><i class='fa-solid fa-x'></i> </a> </td>
+                           
+                            <td><a href='./update.php?id=" . $value->id . "'><i class='fa-solid fa-edit color'></i></a</td>
                         </tr>";
         }
     } 
     catch(PDOException $e) {
         echo $e->getMessage();
-        header("Location: ./index.php");   
+      //  header("Location: ./index.php");   
     }
     $conn = null;
 
@@ -52,7 +53,9 @@
     <title>Maak je eigen Pizza</title>
   </head>
   <body>
+    
     <div class="container">
+    <h1><a href="./index.php"> burritos</a></h1>
         <div class="row">
             <div class="col-3"></div>
             <div class="col-3">
@@ -71,17 +74,34 @@
                     <?php echo $tableRow; ?>
                 </tbody>
                 </table>
+
+                <?php
+        
+
+
+
+/*
+            $sql = "SELECT * FROM `burrito` order by `id` ";
+            $result = mysqli_query($conn, $sql);
+            $record = mysqli_fetch_assoc($result);
+
+
+            if ($result->num_rows > 0) {
+                // output data of each row
+                while($row = $result->fetch_assoc()) {
+                    echo ($row["id"] . " " . $row["name"] . " " . $row["email"] . " " . $row["date"] . " " . $row["timeslot"] . "<br>");
+                }
+            } else {
+                echo "0 results";
+            }
+
+/* */
+                ?>
             </div>
-            <div class="col-3">
-                <a href="http://nu.nl">test</a>
-            </div>
+
         </div>
     </div>
 
-    <!-- Optional JavaScript; choose one of the two! -->
-
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <!--

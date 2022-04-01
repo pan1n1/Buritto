@@ -11,7 +11,7 @@
         $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
 
-        $sql = "DELETE FROM pizza WHERE id=:id";
+        $sql = "DELETE FROM burrito WHERE id=:id";
 
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':id', $id);
@@ -28,6 +28,8 @@
         echo $sql . "<br>" . $e->getMessage();
            
     }
+    header("Location: ./read.php");
     $conn = NULL
 
+    
 ?>
